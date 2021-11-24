@@ -1,6 +1,7 @@
 import flask
 from flask import jsonify
 from flask import request
+import sqlite3
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True #Zeigt Fehlerinformationen im Browser, statt nur einer generischen Error-Message
