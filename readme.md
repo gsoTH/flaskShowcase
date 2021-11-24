@@ -17,3 +17,5 @@ Python has a number of web frameworks that can be used to create web apps and AP
 - API Design Principles
     - Versionierung von APIs um neue Funktionen entwickeln zu können, ohne bisherige API einzustellen.
     - Reifegrad o.ä.? Worauf ist zu achten?
+- Wie sollte die API dokumentiert werden?
+    - [Positivbeispiel Weltbank](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation)
