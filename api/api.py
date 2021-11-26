@@ -87,4 +87,17 @@ def api_filter():
 
     return jsonify(results)
 
+@app.route("/api/v1/chinook/json", methods=["GET"])
+def json_exampleMessage():
+    return "Use POST instead of GET", 403
+
+@app.route("/api/v1/chinook/json", methods=["POST"])
+def json_example():
+
+    req = request.get_json()
+
+    print(req)
+
+    return "Thanks!", 200
+
 app.run()
