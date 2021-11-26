@@ -1,8 +1,9 @@
 # FLASK Showcase
 Flask maps HTTP requests to Python functions.
 
-[Erste Schritte](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask#setting-up "programminghistorian.org")
-
+Quellen:
+- [Erste Schritte (API aufsetzen, Verbindung zur DB, Queries via HTTP entgegennehmen)](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask#setting-up "programminghistorian.org")
+- [Post-Schnittstelle mit JSON](https://pythonise.com/series/learning-flask/working-with-json-in-flask)
 
 
 ### Why Flask?
