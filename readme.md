@@ -4,6 +4,7 @@ Flask maps HTTP requests to Python functions.
 Quellen:
 - [Erste Schritte (API aufsetzen, Verbindung zur DB, Queries via HTTP entgegennehmen)](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask#setting-up "programminghistorian.org")
 - [Post-Schnittstelle mit JSON](https://pythonise.com/series/learning-flask/working-with-json-in-flask)
+- [QuickStart Dokumentation mit einem guten Überblick über die Struktur von Flask](https://flask.palletsprojects.com/en/2.0.x/quickstart/)
 
 
 ### Why Flask?
@@ -20,3 +21,13 @@ Python has a number of web frameworks that can be used to create web apps and AP
     - Reifegrad o.ä.? Worauf ist zu achten?
 - Wie sollte die API dokumentiert werden?
     - [Positivbeispiel Weltbank](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation)
+  
+
+## Examples
+Der Order /examples enthält Beispiele für verschiedene Funktionen.
+
+| Skript        | Beschreibung                                                          |
+|---------------|-----------------------------------------------------------------------|
+| helloWorld.py | Ein Minimalbeispiel für einen laufenden Flask-Server. 10 Zeilen Code.|
+|               |                                                                       |
+|               |                                                                       |
