@@ -94,10 +94,12 @@ def json_exampleMessage():
 @app.route("/api/v1/chinook/json", methods=["POST"])
 def json_example():
 
-    req = request.get_json()
+    if request.is_json:
+        # Parse the JSON into a Python dictionary
+        req = request.get_json()
+        return "JSON received!", 200
 
-    print(req)
-
-    return "Thanks!", 200
+    else:
+        return "Request was not JSON", 400
 
 app.run()
