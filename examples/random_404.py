@@ -12,7 +12,7 @@ def page_not_found(e):
                         "404 - Feel free to dance your frustration off",
                         "Four hundred and fourth message of error"]
 
-    return "<h1>404</h1><p>The resource could not be found.</p>", 404
+    return random.choice(errorMessageList), 404
 
 
 
