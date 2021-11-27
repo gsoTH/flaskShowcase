@@ -29,5 +29,5 @@ Der Order /examples enthält Beispiele für verschiedene Funktionen.
 | Skript        | Beschreibung                                                          |
 |---------------|-----------------------------------------------------------------------|
 | helloWorld.py | Ein Minimalbeispiel für einen laufenden Flask-Server. 10 Zeilen Code.|
-|               |                                                                       |
+| random_404.py | Errorhandling. Hier wird ein zufälliger Text für HTTP-404-Fehler zurückgegeben.|
 |               |                                                                       |
