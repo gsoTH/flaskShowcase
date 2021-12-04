@@ -217,12 +217,13 @@ function mouseClicked() {
                             boom = true;
                             explosionX = x;
                             explosionY = y;
+                        } else {
+                            if(arrHints[y][x] == 0){
+                                discoverNeihgbours(y, x);
+    
+                            }
                         }
 
-                        if(arrHints[y][x] == 0){
-                            discoverNeihgbours(y, x);
-
-                        }
                     }
                 }
             }
