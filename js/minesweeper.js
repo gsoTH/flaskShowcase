@@ -97,7 +97,8 @@ function draw() {
                     rect(x * spaceX, y * spaceY, spaceX, spaceY, 5);
                 } else {
                     textSize(32);
-                    text(arrHints[y][x], x * spaceX, y * spaceY + spaceY);
+                    textAlign(CENTER, CENTER);
+                    text(arrHints[y][x], x * spaceX + spaceX/2, y * spaceY + spaceY/2);
                 }
 
             }
@@ -136,13 +137,17 @@ function mouseClicked() {
                     if(mouseY >= y*spaceY && mouseY < (y+1)*spaceY){
                         
                         arrClicked[y][x] = true;
-                        discoverSurroundingFields(y, x);
+                        
 
                         if(arrBombs[y][x] == true){
                             boom = true;
                             explosionX = x;
                             explosionY = y;
+                        } else {
+                            discoverSurroundingFields(y, x);
                         }
+
+                        
                     }
                 }
             }
