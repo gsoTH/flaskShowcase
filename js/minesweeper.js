@@ -9,21 +9,25 @@ const spaceX = Math.floor(dimensionX / arrX); //widht of each square
 const spaceY = Math.floor(dimensionY / arrY); //heigth of each square
 
 function fillArray(){
-    //Array of 9x9 fields
+
     initializeArrays();
-    //fill arr with random bombs
-    var numberBombs = 0;
-    
-    while(numberBombs < limitBombs){
-        var x = Math.floor(Math.random() * (arrX));
-        var y = Math.floor(Math.random() * (arrY));
-        
-        if(arrBombs[y][x] == false){
-            arrBombs[y][x] = true;
-            numberBombs++;
+
+    createBombs();
+
+
+    function createBombs() {
+        var numberBombs = 0;
+
+        while (numberBombs < limitBombs) {
+            var x = Math.floor(Math.random() * (arrX));
+            var y = Math.floor(Math.random() * (arrY));
+
+            if (arrBombs[y][x] == false) {
+                arrBombs[y][x] = true;
+                numberBombs++;
+            }
         }
     }
-
 
     /**
      * Creates nested arrays.
