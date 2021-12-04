@@ -19,6 +19,77 @@ function fillArray(){
 
     createBombs();
 
+    createHints();
+
+    function createHints(){
+        for(let y = 0; y < arrY; y++){
+            for(let x = 0; x < arrX; x++){
+                let numberOfNeighbouringBombs = 0;
+
+                if(x > 0){
+            
+                    //left
+                    if(arrBombs[y][x-1]){
+                        numberOfNeighbouringBombs++;
+                    }
+        
+                    //top left
+                    if(y > 0){
+                        if(arrBombs[y-1][x-1]){
+                            numberOfNeighbouringBombs++;
+                        } 
+                    }
+        
+                    //bottom left
+                    if(y < arrY-1){
+                        if(arrBombs[y+1][x-1]){
+                            numberOfNeighbouringBombs++;
+                        } 
+                    }
+                }
+        
+                
+                if(x < arrX-1){
+                    //right
+                    if(arrBombs[y][x+1]){
+                        numberOfNeighbouringBombs++;
+                    }
+        
+                    //top right
+                    if(y > 0){
+                        if(arrBombs[y-1][x+1]){
+                            numberOfNeighbouringBombs++;
+                        } 
+                    }
+        
+                    //bottom right
+                    if(y < arrY-1){
+                        if(arrBombs[y+1][x+1]){
+                            numberOfNeighbouringBombs++;
+                        } 
+                    }
+                }
+        
+                //top
+                if(y > 0){
+                    if(arrBombs[y-1][x]){
+                        numberOfNeighbouringBombs++;
+                    } 
+                }
+        
+                //bottom
+                if(y < arrY-1){
+                    if(arrBombs[y+1][x]){
+                        numberOfNeighbouringBombs++;
+                    } 
+                }
+        
+                arrHints[y][x] = numberOfNeighbouringBombs; 
+            }
+            
+        }
+    }
+
 
     function createBombs() {
         var numberBombs = 0;
@@ -96,9 +167,13 @@ function draw() {
                     fill(120);
                     rect(x * spaceX, y * spaceY, spaceX, spaceY, 5);
                 } else {
-                    textSize(32);
-                    textAlign(CENTER, CENTER);
-                    text(arrHints[y][x], x * spaceX + spaceX/2, y * spaceY + spaceY/2);
+                    if(boom == false){
+                        textSize(32);
+                        textAlign(CENTER, CENTER);
+                        if(arrHints[y][x] != 0){
+                            text(arrHints[y][x], x * spaceX + spaceX/2, y * spaceY + spaceY/2);
+                        }
+                    }
                 }
 
             }
@@ -137,91 +212,41 @@ function mouseClicked() {
                     if(mouseY >= y*spaceY && mouseY < (y+1)*spaceY){
                         
                         arrClicked[y][x] = true;
-                        
 
                         if(arrBombs[y][x] == true){
                             boom = true;
                             explosionX = x;
                             explosionY = y;
-                        } else {
-                            discoverSurroundingFields(y, x);
                         }
 
-                        
+                        if(arrHints[y][x] == 0){
+                            discoverNeihgbours(y, x);
+
+                        }
                     }
                 }
             }
         }
     }
+  }
 
+  function discoverNeihgbours(y, x){
+      for(let j = y-1; j<=y+1; j++){
+          for(let i = x-1; i<=x+1; i++){
+                try{
+                    
+                    if(arrHints[j][i] == 0){
+                        if(arrClicked[j][i] == false){
+                            arrClicked[j][i] = true;
+                            //discover even more Neighbours
+                            discoverNeihgbours(j, i);
+                        }
+                    }
 
-    function discoverSurroundingFields(y, x) {
-
-        let numberOfNeighbouringBombs = 0;
-
-        
-        if(x > 0){
-            
-            //left
-            if(arrBombs[y][x-1]){
-                numberOfNeighbouringBombs++;
-            }
-
-            //top left
-            if(y > 0){
-                if(arrBombs[y-1][x-1]){
-                    numberOfNeighbouringBombs++;
-                } 
-            }
-
-            //bottom left
-            if(y < arrY-1){
-                if(arrBombs[y+1][x-1]){
-                    numberOfNeighbouringBombs++;
-                } 
-            }
-        }
-
-        
-        if(x < arrX-1){
-            //right
-            if(arrBombs[y][x+1]){
-                numberOfNeighbouringBombs++;
-            }
-
-            //top right
-            if(y > 0){
-                if(arrBombs[y-1][x+1]){
-                    numberOfNeighbouringBombs++;
-                } 
-            }
-
-            //bottom right
-            if(y < arrY-1){
-                console.log(y, arrY);
-                if(arrBombs[y+1][x+1]){
-                    numberOfNeighbouringBombs++;
-                } 
-            }
-        }
-
-        //top
-        if(y > 0){
-            if(arrBombs[y-1][x]){
-                numberOfNeighbouringBombs++;
-            } 
-        }
-
-        //bottom
-        if(y < arrY-1){
-            if(arrBombs[y+1][x]){
-                numberOfNeighbouringBombs++;
-            } 
-        }
-
-        //TODO if 0 --> iterate over neighbours
-        arrHints[y][x] = numberOfNeighbouringBombs;
-
-
-    }
+                    arrClicked[j][i] = true;
+                } catch (e){
+                    //ignore array-index-errors
+                }
+              }
+          }
   }
