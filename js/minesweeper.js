@@ -1,6 +1,7 @@
 var arrBombs;
 var arrClicked;
 var limitBombs;
+var arrHints; //contains numbers of surrounding bombs
 const arrX = 9; //number of fields
 const arrY = 9;
 const dimensionX =400;
@@ -42,10 +43,12 @@ function fillArray(){
     function initializeArrays() {
         arrBombs = new Array(arrY);
         arrClicked = new Array(arrY);
+        arrHints = new Array(arrY);
 
         for(let y = 0; y < arrY; y++){
             arrBombs[y] = new Array(arrX);
             arrClicked[y] = new Array(arrX);
+            arrHints[y] = new Array(arrX);
             
             for(let x = 0; x < arrX; x++){
                 arrBombs[y][x] = false;
@@ -92,7 +95,9 @@ function draw() {
                     //5 = radius --> rounded corners
                     fill(120);
                     rect(x * spaceX, y * spaceY, spaceX, spaceY, 5);
-                    
+                } else {
+                    textSize(32);
+                    text(arrHints[y][x], x * spaceX, y * spaceY + spaceY);
                 }
 
             }
@@ -129,7 +134,9 @@ function mouseClicked() {
             {
                 if(mouseX >= x*spaceX && mouseX < (x+1)*spaceX){
                     if(mouseY >= y*spaceY && mouseY < (y+1)*spaceY){
+                        
                         arrClicked[y][x] = true;
+                        discoverSurroundingFields(y, x);
 
                         if(arrBombs[y][x] == true){
                             boom = true;
@@ -142,4 +149,74 @@ function mouseClicked() {
         }
     }
 
+
+    function discoverSurroundingFields(y, x) {
+
+        let numberOfNeighbouringBombs = 0;
+
+        
+        if(x > 0){
+            
+            //left
+            if(arrBombs[y][x-1]){
+                numberOfNeighbouringBombs++;
+            }
+
+            //top left
+            if(y > 0){
+                if(arrBombs[y-1][x-1]){
+                    numberOfNeighbouringBombs++;
+                } 
+            }
+
+            //bottom left
+            if(y < arrY-1){
+                if(arrBombs[y+1][x-1]){
+                    numberOfNeighbouringBombs++;
+                } 
+            }
+        }
+
+        
+        if(x < arrX-1){
+            //right
+            if(arrBombs[y][x+1]){
+                numberOfNeighbouringBombs++;
+            }
+
+            //top right
+            if(y > 0){
+                if(arrBombs[y-1][x+1]){
+                    numberOfNeighbouringBombs++;
+                } 
+            }
+
+            //bottom right
+            if(y < arrY-1){
+                console.log(y, arrY);
+                if(arrBombs[y+1][x+1]){
+                    numberOfNeighbouringBombs++;
+                } 
+            }
+        }
+
+        //top
+        if(y > 0){
+            if(arrBombs[y-1][x]){
+                numberOfNeighbouringBombs++;
+            } 
+        }
+
+        //bottom
+        if(y < arrY-1){
+            if(arrBombs[y+1][x]){
+                numberOfNeighbouringBombs++;
+            } 
+        }
+
+        //TODO if 0 --> iterate over neighbours
+        arrHints[y][x] = numberOfNeighbouringBombs;
+
+
+    }
   }
