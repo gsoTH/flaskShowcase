@@ -9,11 +9,11 @@ const dimensionX =400;
 const dimensionY =400;
 const spaceX = Math.floor(dimensionX / arrX); //widht of each square
 const spaceY = Math.floor(dimensionY / arrY); //heigth of each square
-var boom = false;
-var won = false;
-var explosionRadius = 0;
-var explosionX = -1;
-var explosionY = -1;
+var boom;
+var won;
+var explosionRadius;
+var explosionX;
+var explosionY;
 
 function fillArray(){
 
@@ -137,12 +137,20 @@ function fillArray(){
 
 function setup() {
     
-    limitBombs= arrX + Math.floor(Math.random() * (arrY));
-    fillArray();
-
+    reset();
 
     createCanvas(dimensionX, dimensionY);
-    
+}
+
+function reset() {
+    boom = false;
+    won = false;
+    explosionRadius = 0;
+    explosionX = -1;
+    explosionY = -1;
+
+    limitBombs= arrX + Math.floor(Math.random() * (arrY));
+    fillArray();
 }
 
 function draw() {
@@ -156,10 +164,14 @@ function draw() {
         if(boom == true){
             centerX = explosionX*spaceX + spaceX/2;
             centerY = explosionY*spaceY + spaceY/2;
-            //TODO: Farbverlauf einbauen
+
             fill(250, 0, 0, 255-(explosionRadius/2));
             circle(centerX, centerY, explosionRadius);
             explosionRadius++;
+
+            if(explosionRadius > dimensionX){
+                reset();
+            }
             
         }
     }
