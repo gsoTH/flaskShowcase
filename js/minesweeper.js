@@ -2,8 +2,8 @@ var arrBombs;
 var arrClicked;
 var limitBombs;
 var arrHints; //contains numbers of surrounding bombs
-var arrX = 3; //number of fields
-var arrY = 3;
+var arrX; //number of fields
+var arrY;
 var numberOfWins = 1; //multiplier for arrX/arrY
 var totalNumberOfFields;
 const dimensionX =400;
