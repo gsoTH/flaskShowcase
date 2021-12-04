@@ -2,20 +2,21 @@ var arrBombs;
 var arrClicked;
 var limitBombs;
 var arrHints; //contains numbers of surrounding bombs
-const arrX = 9; //number of fields
-const arrY = 9;
-const totalNumberOfFields = arrX * arrY;
+var arrX = 3; //number of fields
+var arrY = 3;
+var numberOfWins = 1; //multiplier for arrX/arrY
+var totalNumberOfFields;
 const dimensionX =400;
 const dimensionY =400;
-const spaceX = Math.floor(dimensionX / arrX); //widht of each square
-const spaceY = Math.floor(dimensionY / arrY); //heigth of each square
+var spaceX; //widht of each square
+var spaceY; //heigth of each square
 var boom;
 var won;
 var explosionRadius;
 var explosionX;
 var explosionY;
 
-function fillArray(){
+function fillArrays(){
 
     initializeArrays();
 
@@ -143,14 +144,26 @@ function setup() {
 }
 
 function reset() {
+    if(won == true){
+        numberOfWins++;
+
+    }
+
     boom = false;
     won = false;
     explosionRadius = 0;
     explosionX = -1;
     explosionY = -1;
 
-    limitBombs= arrX + Math.floor(Math.random() * (arrY));
-    fillArray();
+    arrX = 5 * numberOfWins;
+    arrY = 5 * numberOfWins;
+    totalNumberOfFields = arrX * arrY;
+
+    spaceX = Math.floor(dimensionX / arrX); //widht of each square
+    spaceY = Math.floor(dimensionY / arrY); //heigth of each square
+
+    limitBombs= 2 + Math.pow(numberOfWins, numberOfWins);
+    fillArrays();
 }
 
 function draw() {
@@ -159,7 +172,18 @@ function draw() {
     drawButtons();
     drawGrid();
     drawExplosion();
+    waitForNextRound();
 
+    function waitForNextRound(){
+        if(won == true){
+            explosionRadius+=dimensionX/12;
+
+            if(explosionRadius > dimensionX*6){
+                reset();
+            }
+        }
+    }
+    
     function drawExplosion() {
         if(boom == true){
             centerX = explosionX*spaceX + spaceX/2;
@@ -167,12 +191,11 @@ function draw() {
 
             fill(250, 0, 0, 255-(explosionRadius/2));
             circle(centerX, centerY, explosionRadius);
-            explosionRadius++;
+            explosionRadius+=dimensionX/12;
 
-            if(explosionRadius > dimensionX){
+            if(explosionRadius > dimensionX*6){
                 reset();
             }
-            
         }
     }
 
@@ -204,7 +227,7 @@ function draw() {
 
                     if(arrBombs[y][x] == false){
                         fill(120);
-                        textSize(32);
+                        textSize(spaceX*0.95);
                         textAlign(CENTER, CENTER);
                         if(arrHints[y][x] != 0){
                             text(arrHints[y][x], x * spaceX + spaceX/2, y * spaceY + spaceY/2);
