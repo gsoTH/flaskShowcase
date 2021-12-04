@@ -77,6 +77,7 @@ function draw() {
         if(boom == true){
             centerX = explosionX*spaceX + spaceX/2;
             centerY = explosionY*spaceY + spaceY/2;
+            //TODO: Farbverlauf einbauen
             fill('red');
             circle(centerX, centerY, explosionRadius);
             explosionRadius++;
@@ -130,7 +131,7 @@ function mouseClicked() {
                     if(mouseY >= y*spaceY && mouseY < (y+1)*spaceY){
                         arrClicked[y][x] = true;
 
-                        if(arrBombs[y][x] =true){
+                        if(arrBombs[y][x] == true){
                             boom = true;
                             explosionX = x;
                             explosionY = y;
