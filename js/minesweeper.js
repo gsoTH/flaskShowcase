@@ -7,6 +7,10 @@ const dimensionX =400;
 const dimensionY =400;
 const spaceX = Math.floor(dimensionX / arrX); //widht of each square
 const spaceY = Math.floor(dimensionY / arrY); //heigth of each square
+var boom = false;
+var explosionRadius = 0;
+var explosionX = -1;
+var explosionY = -1;
 
 function fillArray(){
 
@@ -67,14 +71,27 @@ function draw() {
     clear()
     drawButtons();
     drawGrid();
+    drawExplosion();
+
+    function drawExplosion() {
+        if(boom == true){
+            centerX = explosionX*spaceX + spaceX/2;
+            centerY = explosionY*spaceY + spaceY/2;
+            fill('red');
+            circle(centerX, centerY, explosionRadius);
+            explosionRadius++;
+            
+        }
+    }
 
     function drawButtons() {
         for (var y = 0; y < arrY; y++) {
             for (var x = 0; x < arrX; x++) {
                 if (arrClicked[y][x] == false) {
                     //5 = radius --> rounded corners
-                    rect(x * spaceX, y * spaceY, spaceX, spaceY, 5);
                     fill(120);
+                    rect(x * spaceX, y * spaceY, spaceX, spaceY, 5);
+                    
                 }
 
             }
@@ -103,15 +120,25 @@ function draw() {
 }
 
 function mouseClicked() {
-    for (var y = 0; y < arrY; y++) 
-    {
-        for (var x = 0; x < arrX; x++) 
+
+    if(boom == false){ //no interaction after misslick
+        for (var y = 0; y < arrY; y++) 
         {
-            if(mouseX >= x*spaceX && mouseX < (x+1)*spaceX){
-                if(mouseY >= y*spaceY && mouseY < (y+1)*spaceY){
-                    arrClicked[y][x] = true;
+            for (var x = 0; x < arrX; x++) 
+            {
+                if(mouseX >= x*spaceX && mouseX < (x+1)*spaceX){
+                    if(mouseY >= y*spaceY && mouseY < (y+1)*spaceY){
+                        arrClicked[y][x] = true;
+
+                        if(arrBombs[y][x] =true){
+                            boom = true;
+                            explosionX = x;
+                            explosionY = y;
+                        }
+                    }
                 }
             }
         }
     }
+
   }
