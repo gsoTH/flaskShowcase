@@ -1,3 +1,15 @@
+/**
+ * Minesweeper in javascript.
+ * 
+ * Author:  M. Thomas
+ * Git:     https://github.com/gsoTH/
+ * 
+ * This script uses the p5js framework.
+ * https://p5js.org/
+ * 
+ * 
+ */
+
 var arrBombs;
 var arrClicked;
 var limitBombs;
