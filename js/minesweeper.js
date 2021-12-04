@@ -4,11 +4,13 @@ var limitBombs;
 var arrHints; //contains numbers of surrounding bombs
 const arrX = 9; //number of fields
 const arrY = 9;
+const totalNumberOfFields = arrX * arrY;
 const dimensionX =400;
 const dimensionY =400;
 const spaceX = Math.floor(dimensionX / arrX); //widht of each square
 const spaceY = Math.floor(dimensionY / arrY); //heigth of each square
 var boom = false;
+var won = false;
 var explosionRadius = 0;
 var explosionX = -1;
 var explosionY = -1;
@@ -21,11 +23,14 @@ function fillArray(){
 
     createHints();
 
+
     function createHints(){
         for(let y = 0; y < arrY; y++){
             for(let x = 0; x < arrX; x++){
                 let numberOfNeighbouringBombs = 0;
 
+                //if-statements prohibit index-errors.
+                //try-catch would be more readable.
                 if(x > 0){
             
                     //left
@@ -152,7 +157,7 @@ function draw() {
             centerX = explosionX*spaceX + spaceX/2;
             centerY = explosionY*spaceY + spaceY/2;
             //TODO: Farbverlauf einbauen
-            fill('red');
+            fill(250, 0, 0, 255-(explosionRadius/2));
             circle(centerX, centerY, explosionRadius);
             explosionRadius++;
             
@@ -160,20 +165,43 @@ function draw() {
     }
 
     function drawButtons() {
+        let numberOfClickedFields = 0;
         for (var y = 0; y < arrY; y++) {
             for (var x = 0; x < arrX; x++) {
                 if (arrClicked[y][x] == false) {
-                    //5 = radius --> rounded corners
+                    
+                    //Standard colour == gray
                     fill(120);
+
+                    //greenish for secured bombs
+                    if(won == true){
+                        fill(0,150,50);
+                    }
+
+                    //red for unexploded bombs
+                    if(boom == true){
+                        if(arrBombs[y][x] == true){
+                            fill(200, 0, 0);
+                        }    
+                    }
+
+                    //5 = radius --> rounded corners
                     rect(x * spaceX, y * spaceY, spaceX, spaceY, 5);
                 } else {
-                    if(boom == false){
+                    numberOfClickedFields++;
+
+                    if(arrBombs[y][x] == false){
+                        fill(120);
                         textSize(32);
                         textAlign(CENTER, CENTER);
                         if(arrHints[y][x] != 0){
                             text(arrHints[y][x], x * spaceX + spaceX/2, y * spaceY + spaceY/2);
                         }
                     }
+                }
+
+                if((totalNumberOfFields-numberOfClickedFields) == limitBombs){
+                    won = true;
                 }
 
             }
@@ -211,13 +239,16 @@ function mouseClicked() {
                 if(mouseX >= x*spaceX && mouseX < (x+1)*spaceX){
                     if(mouseY >= y*spaceY && mouseY < (y+1)*spaceY){
                         
-                        arrClicked[y][x] = true;
-
                         if(arrBombs[y][x] == true){
                             boom = true;
+                            
+                            //save current position to animate explosion
                             explosionX = x;
                             explosionY = y;
+                        
                         } else {
+                            arrClicked[y][x] = true;
+
                             if(arrHints[y][x] == 0){
                                 discoverNeihgbours(y, x);
     
@@ -231,6 +262,14 @@ function mouseClicked() {
     }
   }
 
+  /**
+   * Uncovers surrounding fields by marking them as clicked.
+   * 
+   * If sourrounding contains fields where hints == 0, function will
+   * call itself for those fields. 
+   * @param {int} y
+   * @param {int} x 
+   */
   function discoverNeihgbours(y, x){
       for(let j = y-1; j<=y+1; j++){
           for(let i = x-1; i<=x+1; i++){
