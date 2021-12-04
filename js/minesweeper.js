@@ -24,32 +24,27 @@ function fillArray(){
         }
     }
 
-    //console.log(arr);
-    //console.log(arrClicked);
 
+    /**
+     * Creates nested arrays.
+     * 
+     * js implements multidimensional arrays as nested arrays (array of arrays).
+     * Therefore we have to initalize each row seperately.
+     */
     function initializeArrays() {
-        arrBombs = [
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-        ];
-        arrClicked = [
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false, false, false],
-        ];
+        arrBombs = new Array(arrY);
+        arrClicked = new Array(arrY);
+
+        for(let y = 0; y < arrY; y++){
+            arrBombs[y] = new Array(arrX);
+            arrClicked[y] = new Array(arrX);
+            
+            for(let x = 0; x < arrX; x++){
+                arrBombs[y][x] = false;
+                arrClicked[y][x] = false;
+            }
+        }
+       
     }
 }
 
