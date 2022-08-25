@@ -1,5 +1,5 @@
 # return Value By Parameter
-In diesem [Beispiel](returnValueByParameter.py) werden Zitate aus einer Datenbank als JSON ausgegeben.
+In [returnValueByParameter.py](returnValueByParameter.py) werden Zitate aus einer Datenbank als JSON ausgegeben.
 - request nutzen um Parameter aus GET entgegenzunehmen
 - Spruch aus einer Datenbank abfragen
 - json manuell zusammenbauen
