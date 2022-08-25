@@ -2,7 +2,6 @@ from flask import Flask, request
 import sqlite3
 import random
 
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -44,7 +43,7 @@ def getSpruch(nummer: int):
     # Wir bauen uns ein json zusammen:
         # result ist ein Tupel mit 3 Feldern (= Anzahl Spalten, die abgefragt wurden)
         # das erste Feld hat den Index 0
-    spruch = '{"nr":"' + result[0] + '", "spruch":"' + result[1] + '", "quelle":"' + result[2] + '"}'
+    spruch = '{ "nr":' + result[0] + ', "spruch":"' + result[1] + '", "quelle":"' + result[2] + '" }'
 
     return spruch 
 
