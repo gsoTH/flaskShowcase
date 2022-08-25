@@ -8,8 +8,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
     query_parameters = request.args
-    spruchNr = query_parameters.get('nr')
-    if spruchNr:
+    spruchNr = query_parameters.get('nr') #Aufruf mit http://127.0.0.1:5000/?nr=11
+    
+    if spruchNr: 
         aktuellerSpruch, aktuelleQuelle = getSpruch(spruchNr)
     else:
         aktuellerSpruch, aktuelleQuelle = getRandomSpruch()
@@ -26,7 +27,7 @@ def getAnzahlSprueche():
     return int(result[0]) #Ohne [0] --> TypeError: int() argument must be a string, a bytes-like object or a number, not 'tuple'
 
 def getRandomSpruch():
-    anzahlSprueche = getAnzahlSprueche
+    anzahlSprueche = getAnzahlSprueche()
     zufallsNummer = random.randrange(1, anzahlSprueche)
 
     spruch = getSpruch(zufallsNummer)
@@ -34,7 +35,7 @@ def getRandomSpruch():
     return spruch[0], spruch[1]
 
 
-def getSpruch():
+def getSpruch(nummer: int):
     query = "SELECT spruch, quelle FROM zitate WHERE nr = "
     query = query + str(nummer)
 
