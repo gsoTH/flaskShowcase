@@ -16,13 +16,6 @@ def index():
     
     return spruch
 
-def getAnzahlSprueche():
-    query = "SELECT count(*) FROM zitate"
-
-    conn = sqlite3.connect('./giganten.sqlite')
-    result = conn.execute(query).fetchone()
-
-    return int(result[0]) #Ohne [0] --> TypeError: int() argument must be a string, a bytes-like object or a number, not 'tuple'
 
 def getRandomSpruch():
     anzahlSprueche = getAnzahlSprueche()
@@ -31,6 +24,15 @@ def getRandomSpruch():
     spruch = getSpruch(zufallsNummer)
     
     return spruch
+
+
+def getAnzahlSprueche():
+    query = "SELECT count(*) FROM zitate"
+
+    conn = sqlite3.connect('./giganten.sqlite')
+    result = conn.execute(query).fetchone()
+
+    return int(result[0]) #Ohne [0] --> TypeError: int() argument must be a string, a bytes-like object or a number, not 'tuple'
 
 
 def getSpruch(nummer: int):
@@ -48,8 +50,5 @@ def getSpruch(nummer: int):
     return spruch 
 
 
-
 if __name__ == "__main__":
     app.run()
-
-
