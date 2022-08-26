@@ -4,6 +4,8 @@ In [returnValueByParameter.py](returnValueByParameter.py) werden Zitate aus eine
 - Spruch aus einer Datenbank abfragen
 - json manuell zusammenbauen
 
+![UML-Sequence Diagramm](returnValueByParameter.drawio.svg)
+
 ## JSON erzeugen
 [JSON](https://de.wikipedia.org/wiki/JavaScript_Object_Notation) ist im Kern nur ein String (Zeichenkette) mit genormter Syntax. Wir können ein JSON manuell zusammenbauen, indem wir einen String zusammensetzen. Z.B.
 ```python
