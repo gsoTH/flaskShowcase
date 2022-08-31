@@ -32,3 +32,4 @@ Der Order /examples enthält Beispiele für verschiedene Funktionen.
 | random_404.py | Errorhandling. Hier wird ein zufälliger Text für HTTP-404-Fehler zurückgegeben.|
 | returnValueByParameter | Request abfragen, JSON manuell zusammenbauen und zurückgeben |
 | returnTemplate | Einsatz von Templates, um html-Seiten mit Werten aus einer Datenbank zu füllen |
+| simpleFactory | Verteilen von Routen (o.ä.) über mehrere Dateien |
