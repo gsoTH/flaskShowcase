@@ -1,13 +1,13 @@
 import sqlite3
 
 
-def dict_factory(cursor, row):
-    d = {}  # Sets {} are used to store multiple items in a single variable.
-            # Unordered, Unique Entries, Unchangeable
+# def dict_factory(cursor, row):
+#     d = {}  # Sets {} are used to store multiple items in a single variable.
+#             # Unordered, Unique Entries, Unchangeable
     
-    for idx, col in enumerate(cursor.description):
-        d[col[0]] = row[idx]
-    return d
+#     for idx, col in enumerate(cursor.description):
+#         d[col[0]] = row[idx]
+#     return d
 
 
 # def start2():
@@ -23,7 +23,7 @@ def createInMemoryDatabase():
     
     # Mit """ können mehrzeilige Strings erzeugt werden.
     query = """ CREATE TABLE zitate (
-                    nr integer
+                    nr integer,
                     zitat text,
                     quelle text,
                     PRIMARY KEY (nr)
@@ -35,6 +35,7 @@ def createInMemoryDatabase():
 
     return connection
 
+#todo: cursor einfügen
 def insertExampleData(connection: sqlite3.Connection):
     data = [
         (1, "Monty Python Live at the Hollywood Bowl", "1"),
