@@ -11,7 +11,7 @@
 # Quelle der Assert Liste:https://understandingdata.com/list-of-python-assert-statements-for-unit-tests/
 
 
-# content of test_sample.py
+# zu testende Funktion
 def func(x):
     return x + 1
 
@@ -66,4 +66,3 @@ list_bsp=[1,3,5,6]
 
 def test_value_in_list():
     assert 5 in list_bsp # Success
-    
