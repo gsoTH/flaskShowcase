@@ -1,2 +1,3 @@
 examples/returnTemplate/giganten.sqlite-journal
 examples/returnTemplate/giganten.sqlite
+*.pyc
