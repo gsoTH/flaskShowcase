@@ -6,7 +6,7 @@ import pytest
 #    input = 39
 #    return input
 
-def test_divisible_by_3(input_value):     # input_value ist der Return-Wert der gleichnamigen Methode
+def test_divisible_by_3(input_value):     # input_value ist der Return-Wert von input_value()
    assert input_value % 3 == 0
 
 def test_divisible_by_6(input_value):

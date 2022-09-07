@@ -4,6 +4,15 @@ Pytest liefert einige Dekoratoren mit, die wir nutzen können, um unsere Tests z
 
 ## @pytest.fixture
 Jede Funktion, die so markiert ist, wird vor jedem Testlauf ausgeführt. So können wir einen gemeinsamen Arrange-Block für mehrere Testfälle erschaffen. 
+```python
+@pytest.fixture
+def input_value():
+   input = 39
+   return input
+
+def test_divisible_by_3(input_value):     # input_value ist der Return-Wert von input_value()
+   assert input_value % 3 == 0
+```
 
 Wenn Fixtures in eine Datei `confest.py` ausgelagert wird, steht sie allen `test_*.py`-Dateien zur Verfügung. Typischerweise wird hier eine Flask-Instanz erstellt und z.B. mit einer Testdatenbank verbunden.
 
