@@ -4,3 +4,8 @@ Mit dem Factory-Pattern kommt es häufig zu ModuleNotFound-Fehlern. Lösungsansa
 - src-Ordnerstruktur
 - markers (--> firstSteps?)
 - conftest.py
+- Factory-Pattern?
+
+TODO: 
+    - Testfälle für Tischreservierung aus Anforderungen ableiten
+    
