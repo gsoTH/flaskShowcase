@@ -37,7 +37,7 @@ def test_bonus_AnweisungsUeberdeckung_1():
 > coverage report 
 Name                           Stmts   Miss  Cover
 --------------------------------------------------
-test_3_coverage.py                22      0   100%
+test_3_coverage.py                22      0   100%  <-- Die Statements der Tests zählen anscheinend mit, denn alles in einer Datei.
 --------------------------------------------------
 TOTAL                             64      0   100%
 """
