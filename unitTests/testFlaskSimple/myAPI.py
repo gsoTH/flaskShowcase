@@ -1,14 +1,13 @@
 from flask import Flask
 
 
-def init_app(app):
-    
+def init_app(app):                          # Normalerweise in eigene Datei ausgelagert, aber Pytest wirft bei mir Import-Fehler :(
     @app.route("/")
     def hello_world():
         return "<h1>Hello, World!</h1>"
 
 
-def create_app():
+def create_app():                           # Factory Pattern
     app = Flask(__name__)
     app.config["DEBUG"] = True
     
