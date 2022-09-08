@@ -1,7 +1,6 @@
 # Für eine detailierte Erklärung siehe:
 # http://kleuker.iui.hs-osnabrueck.de/CSI/Methoden/kombiquUeberdeckung.html
 
-
 def bonus(x:int, y:int):
     ergebnis = 0
     
@@ -14,7 +13,6 @@ def bonus(x:int, y:int):
         ergebnis = ergebnis + 10
 
     return ergebnis
-
 
 
 def test_bonus_AnweisungsUeberdeckung_1():
@@ -37,9 +35,9 @@ def test_bonus_AnweisungsUeberdeckung_1():
 > coverage report 
 Name                           Stmts   Miss  Cover
 --------------------------------------------------
-test_3_coverage.py                22      0   100%  <-- Die Statements der Tests zählen anscheinend mit, denn alles in einer Datei.
+test_3_coverage.py                16      1    94%  <-- Statements der Tests zählen mit, wenn alles in einer Datei.
 --------------------------------------------------
-TOTAL                             64      0   100%
+TOTAL                             16      1    94%
 """
 
 # def test_bonus_AnweisungsUeberdeckung_2():
@@ -63,7 +61,7 @@ Name                           Stmts   Miss  Cover
 --------------------------------------------------
 test_3_coverage.py                20      0   100%
 --------------------------------------------------
-TOTAL                             62      0   100%
+TOTAL                             20      0   100%
  """
 
 """ 
@@ -74,7 +72,7 @@ Name                           Stmts   Miss Branch BrPart  Cover
 ----------------------------------------------------------------
 test_3_coverage.py                22      0      4      1    96%
 ----------------------------------------------------------------
-TOTAL                             64      0      4      1    99% 
+TOTAL                             22      0      4      1    96% 
 """
 
 # def test_bonus_AnweisungsUeberdeckung_3():
@@ -95,9 +93,7 @@ TOTAL                             64      0      4      1    99%
 
 Name                           Stmts   Miss Branch BrPart  Cover
 ----------------------------------------------------------------
-test_1_arrange_act_assert.py      12      0      0      0   100%
-test_2_assert_examples.py         30      0      0      0   100%
 test_3_coverage.py                27      0      4      0   100%
 ----------------------------------------------------------------
-TOTAL                             69      0      4      0   100% 
+TOTAL                             27      0      4      0   100% 
 """
