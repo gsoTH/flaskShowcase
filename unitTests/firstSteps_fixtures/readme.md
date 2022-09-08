@@ -1,6 +1,13 @@
 # Fixtures
+Pytest liefert einige Dekoratoren mit, die wir nutzen können, um unsere Tests zu steuern.
 
-Pytest liefert einige Dekoratoren mit, die wir nutzen können, um unsere Tests zu steuern. 
+Inhalte:
+- `@pytest.fixture` gemeinsamer Arrange-Block für alle Tests
+- `conftest.py` Fixture in eigene Datei auslagern
+- `@pytest.mark.parametrize` Tests mit mehreren Werten durchführen
+- `@pytest.mark.skip` Test überspringen
+- `@pytest.mark.<eigeneMarkierung>` Tests gruppieren, nur bestimmte Tests ausführen
+
 
 ## @pytest.fixture
 Jede Funktion, die so markiert ist, wird vor jedem Testlauf ausgeführt. So können wir einen gemeinsamen Arrange-Block für mehrere Testfälle erschaffen. 
