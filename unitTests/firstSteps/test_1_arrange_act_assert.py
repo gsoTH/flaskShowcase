@@ -3,9 +3,9 @@ def func(x):
     return abs(x) + 1
 
 
-
-def test_func():
-    # Arrage
+# test_nameDerFunktion_<hinweis_zum_test>
+def test_func_wert_wird_inkrementiert():
+    # Arrange
     testwert = 5
     soll_ergebnis = 6
 
@@ -17,7 +17,7 @@ def test_func():
 
 
 def test_func_negativer_wert_wird_ignoriert():
-    # Arrage
+    # Arrange
     testwert = -1
     soll_ergebnis = 2
 
@@ -26,3 +26,6 @@ def test_func_negativer_wert_wird_ignoriert():
 
     # Assert
     assert ist_ergebnis == soll_ergebnis
+
+    ## Als Einzeiler:
+    #assert 2 == func(1)    # Für TDD nicht geeignet

@@ -75,11 +75,11 @@ test_3_coverage.py                22      0      4      1    96%
 TOTAL                             22      0      4      1    96% 
 """
 
-# def test_bonus_AnweisungsUeberdeckung_3():
+# def test_bonus_ZweigUeberdeckung_3():
 #     # Arrange
 #     x = 15
 #     y = 0
-#     soll_ergebnis = 50
+#     soll_ergebnis = 50 
 
 #     # Act
 #     ist_ergebnis = bonus(x, y)
