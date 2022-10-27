@@ -9,9 +9,8 @@ def init_app(app):                          # Normalerweise in eigene Datei ausg
 
 def create_app():                           # Factory Pattern
     app = Flask(__name__)
-    app.config["DEBUG"] = True
     
-    init_app(app)
+    init_app(app)                           # Fügt app die Route für hello_world hinzu
 
     return app
 

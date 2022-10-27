@@ -1,6 +1,8 @@
-# TestFlaskWithPayload
+# TestFlask (with Payload)
 
 Dieses Beispiel ist eine Erweiterung von [TestFlaskSimple](https://github.com/gsoTH/flaskShowcase/tree/master/unitTests/testFlaskSimple). Es existieren nun Tests mit Argumenten und JSON.
+
+Wesentliche Informationen stammen aus dieser Dokumentation zu [Flask Testing.](https://flask.palletsprojects.com/en/2.2.x/testing/)
 
 ## Arrange
 Der folgende Block bereit zwei Variablen vor, die in beiden Tests genutzt werden. 

@@ -2,24 +2,25 @@ import pytest
 from myAPI import create_app
 
 
-@pytest.fixture                                         # pytest führt diese Funktion vor jedem Testlauf durch; Entspricht # Arrange
-def app():                                              # Häufig in conftest.py ausgelagert
+@pytest.fixture
+def app():
     app = create_app()
     app.config['TESTING'] = True
     
-    #yield app.test_client()                            # Unterschied zu return unklar
+    #yield app.test_client()
     return app.test_client()
 
 
 def test_hello_world(app):
-    response = app.get("/")                             # Ergebnis eines HTTP get-Requests speichern
+    route = "/"
+    response = app.get(route)
     assert response.status_code == 200
-    assert b"<h1>Hello, World!</h1>" in response.data   # b wandelt den string in bytecode um, sonst Typfehler
+    assert b"<h1>Hello, World!</h1>" in response.data          # Erläuterungen bis hier sind in \testFlaskSimple
 
 
-def test_hello_person_arguments(app):                           # https://flask.palletsprojects.com/en/2.2.x/testing/
+def test_hello_person_arguments(app):
     route = "/person"
-    payload = {
+    payload = {                                                 # Dictionary ist für beide Tests identisch
         "vorname": "Bud",
         "nachname": "Spencer"
     }
