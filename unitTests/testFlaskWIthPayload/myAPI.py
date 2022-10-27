@@ -7,7 +7,7 @@ def init_app(app):                          # Normalerweise in eigene Datei ausg
     def hello_world():
         return "<h1>Hello, World!</h1>"
 
-    @app.route("/person", methods=['POST'])
+    @app.route("/person")
     def hello_person():
         vorname = request.args.get("vorname")
         nachname = request.args.get("nachname")
@@ -17,7 +17,7 @@ def init_app(app):                          # Normalerweise in eigene Datei ausg
         return greeting, 200
 
 
-    @app.route("/person/json", methods=['POST'])
+    @app.route("/person/json")
     def hello_person_json():
         vorname = request.json.get("vorname")
         nachname = request.json.get("nachname")
