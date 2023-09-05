@@ -3,7 +3,9 @@ def func(x):
     return abs(x) + 1
 
 
-# test_nameDerFunktion__<hinweis_zum_test>
+# test_name_der_Funktion__hinweis_zum_test
+#                        ^
+#                        doppelter Unterstrich nach 
 def test_func__wert_wird_inkrementiert():
     # Arrange
     testwert = 5
