@@ -4,7 +4,7 @@
 
 import pytest
 
-@pytest.fixture         #Wir vor jedem Testlauf ausgeführt
+@pytest.fixture         #Wird vor jedem Testlauf ausgeführt
 def input_value():
    input = 60
    return input
