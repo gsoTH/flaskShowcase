@@ -3,8 +3,8 @@ def func(x):
     return abs(x) + 1
 
 
-# test_nameDerFunktion_<hinweis_zum_test>
-def test_func_wert_wird_inkrementiert():
+# test_nameDerFunktion__<hinweis_zum_test>
+def test_func__wert_wird_inkrementiert():
     # Arrange
     testwert = 5
     soll_ergebnis = 6
@@ -16,7 +16,7 @@ def test_func_wert_wird_inkrementiert():
     assert ist_ergebnis == soll_ergebnis
 
 
-def test_func_negativer_wert_wird_ignoriert():
+def test_func__negativer_wert_wird_ignoriert():
     # Arrange
     testwert = -1
     soll_ergebnis = 2
