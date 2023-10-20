@@ -1,38 +1,24 @@
 # FLASK Showcase
-Flask maps HTTP requests to Python functions.
+Flask ist ein Python-Framework, das HTTP-Requests zu PythonFunktionen zuordnet. 
 
-Quellen:
-- [Erste Schritte (API aufsetzen, Verbindung zur DB, Queries via HTTP entgegennehmen)](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask#setting-up "programminghistorian.org")
-- [Post-Schnittstelle mit JSON](https://pythonise.com/series/learning-flask/working-with-json-in-flask)
-- [QuickStart Dokumentation mit einem guten Überblick über die Struktur von Flask](https://flask.palletsprojects.com/en/2.0.x/quickstart/)
+Für einen [**QuickStart** empfehle ich die Dokumentation mit einem guten Überblick über die Struktur von Flask](https://flask.palletsprojects.com/en/2.0.x/quickstart/)
 
 
-### Why Flask?
-
-Python has a number of web frameworks that can be used to create web apps and APIs. The most well-known is Django, a framework that has a set project structure and which includes many built-in tools. This can save time and effort for experienced programmers, but can be overwhelming. Flask applications tend to be written on a blank canvas, so to speak, and so are more suited to a contained application such as our prototype API.
-
-
-
-
-## Offene Fragen
-- Wie funktioniert ein paralleler Mehrnutzerbetrieb? Docker o.ä.?
-- API Design Principles
-    - Versionierung von APIs um neue Funktionen entwickeln zu können, ohne bisherige API einzustellen.
-    - Reifegrad o.ä.? Worauf ist zu achten?
-- Wie sollte die API dokumentiert werden?
-    - [Positivbeispiel Weltbank](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation)
-  
-## Begriffe
-- A python module is a single file with a .py extension.
-- A python package is a folder that contains at least one python module. For python2, a package requires a __init__.py file
-- A python package can contain any number of nested sub-packages, i.e. packages that contain other packages down the hierarchy of the project - structure.
-- imports are useful when a module needs to use some piece of functionality (e.g. a function or a class) written in another module (of the same or a different package or sub-package)
-
-[Quelle](https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-248ce5b69b1c>)
+## Warum Flask?
+Eine Vorstudie hat [Flask](https://gist.github.com/gsoTH/6893471d1143718c003f6e6cd1dd51c7) als das Webframework mit dem größten Nutzen für den Unterricht identifiziert. 
+Im Wesentlichen lässt sich das Ergebnis so zusammenfassen: Python hat mehrere Web-Frameworks zur Entwicklung von WebApps oder APIs. Das bekannteste ist Django, ein Framework mit vielen eingebauten Funktionen, die uns eine Menge Arbeit abnehmen. Für Erfahrene Entwicklerinnen und Entwickler kann das Zeit sparen, aber für den Einstieg ist der Funktionsumfang unübersichtlich. Flask startet mit minimalem Code-Input und zwingt uns, alle Funktionen manuell zu implementieren. Dadurch ergeben sich mehr Lernanlässe.   
 
 ## Ordner
 api: Meine ersten Versuche mit Flask; Gerne ignorieren :)
 Examples:  Beispiele für verschiedene Funktionen, Tipps, Tricks
 unitsTests: Alles zum Thema automatisiertes Testen mit Flask
 
+## Begriffe
+- A python **module** is a single file with a .py extension.
+- A python **package** is a folder that contains at least one python module. For python2, a package requires a __init__.py file
 
+Weitere Begriffe finden Sie im [Wiki](https://github.com/gsoTH/flaskShowcase/wiki/Begriffe)
+
+## Weitere Quellen
+- [Erste Schritte (API aufsetzen, Verbindung zur DB, Queries via HTTP entgegennehmen)](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask#setting-up "programminghistorian.org")
+- [Post-Schnittstelle mit JSON](https://pythonise.com/series/learning-flask/working-with-json-in-flask)
