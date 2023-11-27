@@ -30,7 +30,7 @@ Abschließend kann man sich das Ergebnis ansehen mit:
 
 ## Konventionen
 ### Dateibenennung
-pytest durchsucht alle Dateien mit dem Muster ``test_*.py` nach Testfunktionen.
+pytest durchsucht alle Dateien mit dem Muster ``test_*.py`` nach Testfunktionen.
 pytest findet nur Funktionen mit dem Präfix ``test_`` Daraus ergibt sich diese Namenskonvention für Tests:
 - ``zieldatei.py``
 - ``test_zieldatei.py``
