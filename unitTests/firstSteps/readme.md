@@ -36,7 +36,7 @@ pytest findet nur Funktionen mit dem Präfix ``test_`` Daraus ergibt sich diese 
 - ``test_zieldatei.py``
 und darin:
     - ``test_nameDerFunktion`` oder besser: 
-    - ``test_nameDerFunktion_hinweis_zum_testinhalt``
+    - ``test_nameDerFunktion__hinweis_zum_testinhalt`` (double Underscore beachten)
 
 ### Testaufbau
 Innerhalb jedes (Unit)Tests sollte das AAA-Muster befolgt werden:
