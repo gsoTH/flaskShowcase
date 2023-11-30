@@ -1,30 +1,30 @@
 from flask import Flask
-from flask import request
+from flask import request, jsonify, json
 
 
 def init_app(app):                          # Normalerweise in eigene Datei ausgelagert, aber Pytest wirft bei mir Import-Fehler :(
-    @app.route("/")
-    def hello_world():
-        return "<h1>Hello, World!</h1>"
 
-    @app.route("/person", methods=['GET','POST'])   # GET ist standard, ermöglicht Test via Browser, z.B. http://127.0.0.1:5000/person?vorname=Bud&nachname=Spencer
-    def hello_person():                             # POST muss explizit angegeben werden, sonst 405
-        vorname = request.args.get("vorname")
-        nachname = request.args.get("nachname")
-        
-        greeting = "<h1>Hello, " + vorname + " " + nachname + "</h1>"
-        
-        return greeting, 200
+    people_data = [                         # Python dictionary entspricht JSON-Struktur
+            {
+                "vorname": "Terrence",
+                "nachname": "Hill"
+            }
+    ]
+
+    @app.route("/persons", methods=['GET'])
+    def get_all_persons():
+        return jsonify(people_data), 200
 
 
-    @app.route("/person/json", methods=['POST'])
-    def hello_person_json():
+    @app.route("/persons", methods=['POST'])
+    def create_new_person():
         vorname = request.json.get("vorname")
         nachname = request.json.get("nachname")
         
-        greeting = "<h1>Hello, " + vorname + " " + nachname + "</h1>"
+        if(vorname and nachname):
+            people_data.append({"vorname":vorname, "nachname":nachname})
         
-        return greeting, 200
+        return  get_all_persons()
 
 
 def create_app():                           # Factory Pattern
