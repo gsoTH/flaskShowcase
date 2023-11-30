@@ -11,7 +11,7 @@ def app():
     return app.test_client()
 
 
-def test_persons__get(app):
+def test_persons_get(app):
     route = "/persons"
     
     response = app.get(route)
@@ -20,7 +20,7 @@ def test_persons__get(app):
     assert response.get_json()[0] == {'nachname': 'Hill', 'vorname': 'Terrence'}
 
 
-def test_persons__post(app):
+def test_persons_post(app):
     route = "/persons"
     payload = {
         "vorname": "Bud",
@@ -36,3 +36,17 @@ def test_persons__post(app):
                                                                 # response.get_json()[1] nur korrekt, wenn Testreihenfolge fix
                                                                 # Tests daher nicht isoliert ausführbar
                                                                 # besser: response.get_json()[len(response.get_json())-1]
+
+
+@pytest.mark.parametrize("payload", [                           # siehe /unitTests/firstSteps_fixtures
+    {"vorname": "Bud"},
+    {"nachname": "Spencer"},
+    {"v": "Bud", "n": "Spencer"},
+])
+def test_persons_post__fehlerhaftes_json_wirft_Fehler(app, payload): 
+    route = "/persons"
+    
+    response = app.post(path = route, json=payload)
+    
+    assert response.status_code == 400
+    

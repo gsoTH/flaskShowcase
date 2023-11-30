@@ -21,8 +21,10 @@ def init_app(app):                          # Normalerweise in eigene Datei ausg
         vorname = request.json.get("vorname")
         nachname = request.json.get("nachname")
         
-        if(vorname and nachname):
-            people_data.append({"vorname":vorname, "nachname":nachname})
+        if(not vorname or not nachname):
+            return "Erwartetes Format: {'vorname': str, 'nachname': str}", 400
+            
+        people_data.append({"vorname":vorname, "nachname":nachname})
         
         return  get_all_persons()
 
