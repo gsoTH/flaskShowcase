@@ -40,7 +40,7 @@ response = app.post(path = route, json=payload)
 
 ## Assert
 Die `response` des **ersten** Tests sieht so aus:
-```json
+```
 [
     {
         'nachname': 'Hill', 
@@ -66,7 +66,7 @@ Die `response` des **ersten** Tests sieht so aus:
     ```
 
 **Nach** dem zweiten Test sieht die Response so aus:
-```json
+```
 [
     {
         'nachname': 'Hill', 
