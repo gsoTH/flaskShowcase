@@ -29,6 +29,7 @@ def test_persons__post(app):
     
     response = app.post(path = route, json=payload)             # json wandelt ein Dict in ein json um
                                                                 # nicht verwechsleln mit "query_string = payload"
+                                                                # siehe readme.md
 
     assert response.status_code == 200
     assert response.get_json()[1] == payload                    # Verstoß gegen FIRST-Prinzip!

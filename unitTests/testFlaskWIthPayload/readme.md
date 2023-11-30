@@ -10,7 +10,7 @@ Der folgende Block bereit zwei Variablen vor, die in beiden Tests genutzt werden
 `route` enthält den Pfad zum API-Endpoint.
 ``payload` enthält ein python-Dictionary, mit Werten die an unsere API übergeben werden sollen.
 ```python
-route = "/person"
+route = "/persons"
 payload = {
     "vorname": "Bud",
     "nachname": "Spencer"
@@ -38,3 +38,51 @@ response = app.post(path = route, query_string = payload)
 response = app.post(path = route, json=payload)
 ```
 
+## Assert
+Die `response` des **ersten** Tests sieht so aus:
+```json
+[
+    {
+        'nachname': 'Hill', 
+        'vorname': 'Terrence'
+    }
+]
+```
+
+- `.get_json()[0]` greift auf den ersten Eintrag zu: `
+    ```
+    {
+        'nachname': 'Hill', 
+        'vorname': 'Terrence'
+    }
+    ```
+    Die Formatierung ist bei JSON egal. Daher ist der obige Eintrag identisch zu: 
+    ```
+    {'nachname': 'Hill', 'vorname': 'Terrence'}
+    ```
+- mit `.get_json()[0]["vorname"]` würden wir dieses Ergebnis erhalten:
+    ```
+    Terrence
+    ```
+
+**Nach** dem zweiten Test sieht die Response so aus:
+```json
+[
+    {
+        'nachname': 'Hill', 
+        'vorname': 'Terrence'
+    }, 
+    {
+        'nachname': 'Spencer', 
+        'vorname': 'Bud'
+    }
+]
+```
+
+Und `.get_json()[1]` greift auf den zweiten Eintrag zu: `
+```
+{
+    'nachname': 'Spencer', 
+    'vorname': 'Bud'
+}
+```
