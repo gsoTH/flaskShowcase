@@ -4,8 +4,8 @@ from flask import request, jsonify, json
 
 def init_app(app):                          # Normalerweise in eigene Datei ausgelagert, aber Pytest wirft bei mir Import-Fehler :(
 
-    people_data = [                         # Python dictionary entspricht JSON-Struktur
-            {
+    people_data = [                         # Python-List, damit wir später people_data.append() nutzen können.
+            {                               # Eigentlich unsauber, siehe dazu Readme.md--> Sauber formatierte JSONS
                 "vorname": "Terrence",
                 "nachname": "Hill"
             }

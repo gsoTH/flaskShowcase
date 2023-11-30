@@ -86,3 +86,54 @@ Und `.get_json()[1]` greift auf den zweiten Eintrag zu: `
     'vorname': 'Bud'
 }
 ```
+
+# Sauber formatierte JSONs
+In myAPI.py findet sich eine hart codierte *Liste*: 
+```python
+    people_data = [
+            {
+                "vorname": "Terrence",
+                "nachname": "Hill"
+            }
+    ]
+```
+Der Typ Liste wurde gewählt, damit die append-Methode genutzt werden kann:  
+`people_data.append({"vorname":vorname, "nachname":nachname})`
+
+Wenn die Liste zurückgegeben wird, fehlt im resultierenden JSON eine Bezeichnung, denn sauber formatiert sollte das eigentlich so aussehen:
+```python
+{
+   "people": [
+       {
+         "vorname": "Terrence",
+         "nachname": "Hill"
+       }
+     ]
+}
+```
+
+Um ein sauberes JSON zu erhalten, könnten wir die Informationen als Dictionary speichern. Ein Python-Dictionary entspricht weitestgehend der JSON-Struktur:
+```python
+people_data = {
+        "persons":[                         
+            {
+                "vorname": "Terrence",
+                "nachname": "Hill"
+            }
+        ]
+    }
+```
+
+:anger: Dann verlieren wir aber die Methode  `list.appendI()` 
+
+## Lösungsansatz
+Die Methode `jsonify()` macht im Kern nichts anderes, als ein {}-Klammernpaar um eine Collection zu setzen. Wir können das resultierende JSON mit einer Bezeichnung versehen, indem wir in **myAPI.py** schreiben:
+```python
+# alte Version: return jsonify(people_data), 200
+return jsonify(people=people_data), 200
+```
+Und anschließend diese Veränderung vornehmen in **test_myAPI.py**:
+```python
+# alte Version: assert response.get_json()[0] == {'nachname': 'Hill', 'vorname': 'Terrence'}
+assert response.get_json()["people"][0] == {'nachname': 'Hill', 'vorname': 'Terrence'}
+```
