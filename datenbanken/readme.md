@@ -4,7 +4,7 @@ Beispiele zur Verbindung zwischen Datenbanken und Flask
 | Skript                                               | Beschreibung                                                                     |
 |------------------------------------------------------|----------------------------------------------------------------------------------|
 | [sqlite_insert_execute.py](sqlite_insert_execute.py) | Eine oder mehrere SQL-Anweisungen ausführen und Parameter einsetzen.             |
-| [sqlite_path_import_error.py](sqlite_path_import_error.py) | Datenbank-Import-Error verhindern indem relationale Dateipfade genutzt werden.   |
+| [sqlite_relative_path.py](sqlite_relative_path.py)   | Datenbank-Import-Error verhindern indem relative Dateipfade absolut werden.      |
 | [sqlite_row_factory.py](sqlite_row_factory.py)       | Beispiele, wie die Rückaben von SQL-Abfragen in Python-Typen umgewandelt werden. |
 
 
