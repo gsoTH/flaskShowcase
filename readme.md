@@ -8,6 +8,7 @@ Für einen [**QuickStart** empfehle ich die Dokumentation mit einem guten Überb
 Eine Vorstudie hat [Flask](https://gist.github.com/gsoTH/6893471d1143718c003f6e6cd1dd51c7) als das Webframework mit dem größten Nutzen für den Unterricht identifiziert. 
 Im Wesentlichen lässt sich das Ergebnis so zusammenfassen: Python hat mehrere Web-Frameworks zur Entwicklung von WebApps oder APIs. Das bekannteste ist Django, ein Framework mit vielen eingebauten Funktionen, die uns eine Menge Arbeit abnehmen. Für Erfahrene Entwicklerinnen und Entwickler kann das Zeit sparen, aber für den Einstieg ist der Funktionsumfang unübersichtlich. Flask startet mit minimalem Code-Input und zwingt uns, alle Funktionen manuell zu implementieren. Dadurch ergeben sich mehr Lernanlässe.   
 
+Weil es hier um die Kommunikation via HTTP geht, empfehle ich die [Evolution von HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP) zu lesen.
 ## Ordner
 api: Meine ersten Versuche mit Flask; Gerne ignorieren :)
 Examples:  Beispiele für verschiedene Funktionen, Tipps, Tricks
