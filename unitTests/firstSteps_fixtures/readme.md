@@ -26,10 +26,24 @@ Wenn Fixtures in eine Datei `confest.py` ausgelagert wird, steht sie allen `test
 ## @pytest.mark.parametrize
 Mit dieser Markierung können wir eine Testfunktion mit verschiedenen Parametern aufrufen. In diesem Beispiel erfolgen vier Aufrufe:
 ```python
+testdata = [
+   (1,11),
+   (2,22),
+   (3,35),
+   (4,44)
+]
+@pytest.mark.parametrize("input, expected_output",testdata)
+def test_multiplication_11(input, expected_output):
+   assert 11*input == expected_output
+```
+
+Auch in einer Zeile möglich:
+```python
 @pytest.mark.parametrize("num, output",[(1,11),(2,22),(3,35),(4,44)])
 def test_multiplication_11(num, output):
    assert 11*num == output
 ```
+
 
 ## @pytest.mark.skip
 Verhindert, dass der Test ausgeführt wird. Wird im Testreport als s markiert: `> test_3_weitere_marker.py .FFs` (ein Test erfolgreich, zwei fehlhaft, einer skipped).
